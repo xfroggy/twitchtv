@@ -6,13 +6,14 @@ start - custom
 */
 .btn-danger {
   width: 130px;
+  margin: 20px;
 }
 
 
 h1 {
   padding-bottom: 50px;
-}
 
+}
 .table tbody>tr>td.vert-align {
   vertical-align: middle;
 }
