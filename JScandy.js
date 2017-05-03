@@ -42,7 +42,7 @@ var usersURL = "https://wind-bow.glitch.me/twitch-api/users/"+user+"?callback=?"
 var channelsURL = "https://wind-bow.glitch.me/twitch-api/channels/"+user+"?callback=?"
 
 //Starts here with first API call - it's a users call, then sends the data to a callback function which will check to see if there is an error message (ie. doesn't exist currently)
-callAPI("user", checkMessage);
+callAPI(usersURL, checkMessage);
 
   
   
@@ -90,7 +90,7 @@ function streamStatus(result){
     console.log("This user exists, but is currently offline")
   } else {
   console.log("from streamsStatus call - this user exists and is streaming, will now call to get stream info ");};
-  callAPI("channels", GetUserData);
+  callAPI(channelsURL, GetUserData);
 }
 
 //1st API call process - message y/n
@@ -98,7 +98,7 @@ function checkMessage(result){
   if (result.message === undefined) {
      console.log("no message - means user exists, still unsure if currently streaming or offline - will now do a streamStatus call to check...")
     //call 2nd api to check if streaming
-    callAPI("streams", streamStatus); 
+    callAPI(streamsURL, streamStatus); 
   } else {
     //yes - means not an active user
    console.log("The message:  "+result.message);
@@ -110,11 +110,7 @@ if (show =="all" || show =="offline") buildRow(result.message, false, placeholde
 
 //calls api can pass the url and which callback function to call and process data
 function callAPI(callURL, callback) {
-$.getJSON("https://wind-bow.glitch.me/twitch-api/"
-    +callURL
-    +"/"
-    +user
-    +"?callback=?").done(callback); 
+$.getJSON(callURL).done(callback); 
   // for debugging, to track when and if call is successful
   console.log("json call worked"); 
 }; 
