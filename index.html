@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Twitch.TV Streamer</title>
+		
+		<!-- load my javascript & CSS, bootstrap, jquery --> 
+		<link rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" > // loads jquery
+        </script>
+        <script src="JScandy.js"> </script>
+    </head>
+<body> 
+  <div class = "container">
+    <div class = "jumbotron">
+      <h1 class="row justify-content-md-center">Twitch Streamers</h1>
+        <div class = "container">
+          <div class = "row justify-content-md-center">
+            <div class = "col-3">
+              <a class="btn btn-danger btn-lg" href="#" role="button" id="all">ALL</a>
+            </div>  
+            <div class = "col-3">
+             <a class="btn btn-danger btn-lg" href="#" role="button" id="online">ONLINE</a>
+            </div> 
+            <div class = "col-3">
+               <a class="btn btn-danger btn-lg" href="#" role="button" id="offline">OFFLINE</a>
+            </div> 
+          </div><!--row-->
+    </div> <!--container-->
+   </div><!--jumbotron-->
+      <table class="table table-hover">
+        <thead >
+          <tr>
+            <th colspan="2" class="text-center">streamer</th>
+           
+            <th>status</th>
+          </tr>
+        </thead> 
+        <tbody id="userRow">
+        </tbody>
+      </table>  
+  </div> <!--container-->
+</html>

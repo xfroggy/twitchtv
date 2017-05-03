@@ -17,12 +17,12 @@ Link to finished project will go here
 
 * HTML
 * Javascript
-* ???
+* Bootstrap
+* CSS
 
 ## Authors
 
 * **Todd Smitala** - *Initial work* - [xfroggy](https://github.com/xfroggy)
-* **Kenneth Amanfo Junior** - *Initial work* - [???](https://githumb.com/???)
 
 ## License
 
@@ -30,6 +30,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Hat tip to Kenneth Amanfo Junior who collaborated with planning and problem solving as well as @fentablar from Chingu-Raccons cohort for tips starting out
