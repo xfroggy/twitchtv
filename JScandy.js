@@ -1,17 +1,19 @@
 $("document").ready(function(){
+    
 const placeholderLogo = "http://www.fillmurray.com/400/400";
-
 var twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404", "brunofin", "test_channel"];
+
+//default page load will show 'all' users
 var show = "all";
 $('#userRow').empty();
 twitchUsers.forEach(buildPageOfUsers);
 
+//Buttons to select all / online /offline
 $('#all').focus(function()
 {
   show = "all";
   $('#userRow').empty();
  twitchUsers.forEach(buildPageOfUsers);
-  
 });
 
 $('#online').focus(function()
@@ -19,7 +21,6 @@ $('#online').focus(function()
   show = "online";
   $('#userRow').empty();
  twitchUsers.forEach(buildPageOfUsers);
-  
 });
 
 $('#offline').focus(function()
@@ -27,15 +28,11 @@ $('#offline').focus(function()
   show = "offline";
   $('#userRow').empty();
  twitchUsers.forEach(buildPageOfUsers);
-  
 });
 
 function buildPageOfUsers(user) {
 var state = true; 
 console.log("This is the buildPageOfUsers user:  "+ user);
-//var testUser = "test_channel"; // using this to test different cases.  ESL_SC2 for online and streaming, freecodecamp for exists but offline, brunofin for doesn't exist, comster404 for used to exist but doesn't anymore.
-
-//var state = true; // global (for now), meaning default is 'all', later I change this state depending on json call.
 
 var streamsURL =  "https://wind-bow.glitch.me/twitch-api/streams/"+user+"?callback=?";
 var usersURL = "https://wind-bow.glitch.me/twitch-api/users/"+user+"?callback=?";
@@ -49,18 +46,43 @@ callAPI(usersURL, checkMessage);
 function statusLink(state, game, status, url, user) {
   console.log("The status link says:  "+status + " and user is:  "+user);
 
-  if (!state && status=== undefined) {return "<a href=\""+url+"\">"+user+"</a></td><td class=\"vert-align\">offline</td>"}//freecodecamp
-  else if (!state && status !== undefined) {return user+"</td><td class=\"vert-align\">"+status+"</td>"} //burnofin comster404
-  else {return "<a href=\""+url+"\">"+user+"</a></td><td class=\"vert-align\"><a href=\""+url+"\">"+game+"</a><br>"+status+"</td>"}
+  if (!state && status=== undefined) { //user exists but is not streaming - ex. freecodecamp
+      return "<a href=\""
+      +url
+      +"\" target=\"_blank\">"
+      +user
+      +"</a></td><td class=\"vert-align\">offline</td>"
+  }
+  
+  else if (!state && status !== undefined) { // user either doesn't exist or no longer exists - ex. brunofin comster404
+      return user
+      +"</td><td class=\"vert-align\">"
+      +status
+      +"</td>"} 
+      
+  else { //user exists and is streaming
+      return "<a href=\""
+      +url
+      +"\" target=\"_blank\">"
+      +user
+      +"</a></td><td class=\"vert-align\"><a href=\""
+      +url
+      +"\" target=\"_blank\">"
+      +game
+      +"</a><br>"
+      +status
+      +"</td>"}
 }
  
 function buildRow(status, state, logo, url, game, show){
 console.log("The buildRow status:  "+status+".   the buildRow state:  "+state+".  The url is:  "+url+" and the user is:  "+user);
 
-$('#userRow').append("<tr><td class=\"vert-align\"><img  class=\"logo\" src='"+logo+"'></td><td class=\"vert-align\">"+statusLink(state, game, status, url, user));
+    $('#userRow').append("<tr><td class=\"vert-align\"><img  class=\"logo\" src='"
+        +logo
+        +"'></td><td class=\"vert-align\">"
+        +statusLink(state, game, status, url, user)
+        );
 } 
-  
-
   
   
 function GetUserData(result) {

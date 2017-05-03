@@ -11,7 +11,7 @@ Build an app that is functionally similar to this: https://codepen.io/FreeCodeCa
 
 ### Deployment
 
-Link to finished project will go here
+Link to finished project: https://xfroggy.github.io/twitchtv/
 
 ## Built With
 
